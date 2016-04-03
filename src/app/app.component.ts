@@ -8,6 +8,8 @@ import {Home} from './home';
 import {AppState} from './app.service';
 import {RouterActive} from './router-active';
 import {StatsApp} from "./statistics/stats";
+import {AuthPage} from "./auth/auth";
+import {Alert} from 'ng2-bootstrap/ng2-bootstrap';
 
 /*
  * App Component
@@ -17,7 +19,7 @@ import {StatsApp} from "./statistics/stats";
   selector: 'app',
   pipes: [ ],
   providers: [ ],
-  directives: [ RouterActive ],
+  directives: [ RouterActive, Alert ],
   styles: [`
     h1 {
       font-family: Arial, Helvetica, sans-serif
@@ -50,9 +52,12 @@ import {StatsApp} from "./statistics/stats";
           <li router-active>
             <a [routerLink]=" ['About'] ">About</a>
           </li>
-                    <li router-active>
+          <li router-active>
             <a [routerLink]=" ['Stats'] ">Statistics</a>
           </li>
+          <li router-active>
+            <a [routerLink]=" ['Auth'] ">Login</a>
+          </li>          
         </ul>
       </nav>
     </header>
@@ -69,6 +74,7 @@ import {StatsApp} from "./statistics/stats";
     </footer>
 
     <pre>this.appState.state = {{ appState.state | json }}</pre>
+    <alert type="info">ng2-bootstrap hello world!</alert>
   `
 })
 @RouteConfig([
@@ -77,6 +83,7 @@ import {StatsApp} from "./statistics/stats";
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
   { path: '/stats',  name: 'Stats',  component: StatsApp },
+  { path: '/login',  name: 'Auth',  component: AuthPage },
 ])
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
