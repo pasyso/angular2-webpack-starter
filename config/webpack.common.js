@@ -4,6 +4,7 @@
 
 var webpack = require('webpack');
 var helpers = require('./helpers');
+require('babel-core/register');
 
 /**
  * Webpack Plugins
