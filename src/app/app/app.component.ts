@@ -11,6 +11,7 @@ import {AuthPage} from "./../auth/auth";
 import {Alert} from 'ng2-bootstrap/ng2-bootstrap';
 import {RouterActive} from "../router-active";
 import {TestApp} from "../test/test";
+import {SurveysPage} from "../surveys/surveys";
 
 /*
  * App Component
@@ -33,6 +34,7 @@ import {TestApp} from "../test/test";
   { path: '/stats',  name: 'Stats',  component: StatsApp },
   { path: '/login',  name: 'Auth',  component: AuthPage },
   { path: '/test',  name: 'Test',  component: TestApp },
+  { path: '/surveys',  name: 'Surveys',  component: SurveysPage },
 ])
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';

@@ -5,8 +5,10 @@ export * from './app.service.ts';
 
 import {AppState} from './app.service.ts';
 import {TodoService} from "../test/todo/services/todo-service";
+import {SurveysService} from "../surveys/services/surveys-service";
 
 // Application wide providers
 export const APP_PROVIDERS = [
   AppState, StatsService, TodoService,
+  SurveysService
 ];

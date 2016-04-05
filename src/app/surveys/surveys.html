@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="row">
+    <search-box (update)="search = $event"></search-box>
+    <status-selector (select)="status = $event"></status-selector>
+    <survey-list [status]="status" [search]="search"></survey-list>
+  </div>
+</div>
