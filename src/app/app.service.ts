@@ -1,33 +1,46 @@
-import {Injectable} from 'angular2/core';
-import {HmrState} from 'angular2-hmr';
+import { Injectable } from '@angular/core';
+
+export type InternalStateType = {
+  [key: string]: any
+};
 
 @Injectable()
 export class AppState {
-  @HmrState() _state = {};
 
-  constructor() {
+  public _state: InternalStateType = { };
 
-  }
-
-  get state() {
+  /**
+   * Already return a clone of the current state.
+   */
+  public get state() {
     return this._state = this._clone(this._state);
   }
-  set state(value) {
+  /**
+   * Never allow mutation
+   */
+  public set state(value) {
     throw new Error('do not mutate the `.state` directly');
   }
 
-
-  get(prop?: any) {
+  public get(prop?: any) {
+    /**
+     * Use our state getter for the clone.
+     */
     const state = this.state;
-    return state[prop] || state;
+    return state.hasOwnProperty(prop) ? state[prop] : state;
   }
 
-  set(prop: string, value: any) {
+  public set(prop: string, value: any) {
+    /**
+     * Internally mutate our state.
+     */
     return this._state[prop] = value;
   }
 
-
-  _clone(object) {
+  private _clone(object: InternalStateType) {
+    /**
+     * Simple object clone.
+     */
     return JSON.parse(JSON.stringify( object ));
   }
 }
